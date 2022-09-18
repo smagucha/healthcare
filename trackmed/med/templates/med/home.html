@@ -1,0 +1,46 @@
+{% extends 'med/base.html' %}
+{%load custom_tags%}
+{%block title%}{{title}}{%endblock%}
+{%block content%}
+<div class="card">
+  <div class="card-body">
+    <a href="{% url 'createpatient' %}" class="link-primary">add patient</a>
+    <!-- Table with hoverable rows -->
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">full name</th>
+          <th scope="col">date of birth</th>
+          <th scope="col">gender</th>
+          <th scope="col">location</th>
+          <th scope="col">height</th>
+          <th>weight</th>
+          {% if request.user|has_group:"administer"%}
+          <th>update</th>
+          <th>delete</th>
+          {%endif%}
+        </tr>
+      </thead>
+      <tbody>
+       
+        {%for detail in list_patient%}
+        <tr>
+          {% if request.user|has_group:"patients" or request.user|has_group:"administer" or request.user|has_group:"doctor"%}
+          <th scope="row">{{detail.full_name}}</th>
+          <td>{{detail.DOE}}</td>
+          <td>{{detail.gender}}</td>
+          <td>{{detail.location}}</td>
+          <td>{{detail.height}}</td>
+          <td>{{detail.weight}}</td>
+          {%endif%}
+          {% if request.user|has_group:"administer"%}
+          <td><a href="{% url 'updatepatient' detail.id%}">update</a></td>
+          <td><a href="{% url 'deletepatient' detail.id%}">delete</a></td>
+          {%endif%}
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%endblock%}

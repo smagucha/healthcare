@@ -1,0 +1,33 @@
+{% extends 'med/base.html' %}
+{%load custom_tags%}
+{%block title%}{{title}}{%endblock%}
+{%block content%}
+<h1>welcome, {{user.username}}</h1>
+<h5>medicine to take</h5>
+<div class="card">
+<div class="card-body">
+  <!-- Table with hoverable rows -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">patient</th>
+        <th scope="col">medicine</th>
+        <th scope="col">days to take</th>
+        <th scope="col">schedule</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for detail in getmed%}
+      <tr>
+        <th scope="row">{{detail.user}}</th>
+        <td>{{detail.medicine}}</td>
+        <td>{{detail.days_to_take}}</td>
+        <td>{{detail.schedule}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  <!-- End Table with hoverable rows -->
+</div>
+</div>
+{%endblock%}

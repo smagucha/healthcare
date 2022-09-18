@@ -1,0 +1,47 @@
+{% extends 'med/base.html' %}
+{%block title%}{{title}}{%endblock%}
+{%block content%}
+<table>
+	<tr>
+		<th>
+			full name
+		</th>
+		<th>
+			age
+		</th>
+		<th>
+			gender
+		</th>
+		<th>
+			location
+		</th>
+		<th>
+			height
+		</th>
+		<th>
+			weight
+		</th>
+	</tr>
+		<tr>
+			<td>
+				{{patientdata.full_name}}
+			</td>
+			<td>
+				{{patientdata.age}}
+			</td>
+			<td>
+				{{patientdata.gender}}
+			</td>
+			<td>
+				{{patientdata.location}}
+			</td>
+			<td>
+				{{patientdata.height}}
+			</td>
+			<td>
+				{{patientdata.weight}}
+			</td>
+		</tr>
+</table>
+
+{%endblock%}
