@@ -6,4 +6,4 @@ from django.forms import ModelForm
 class userupdateform(ModelForm):
     class Meta:
         model = User
-        fields =['username','first_name', 'last_name', 'email']
+        fields = ["username", "first_name", "last_name", "email"]

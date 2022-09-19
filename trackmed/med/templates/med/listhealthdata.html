@@ -4,7 +4,7 @@
 {%block content%}
 <div class="card">
 <div class="card-body">
-  <!-- Table with hoverable rows -->
+  <a href="{% url 'createpatientdata' %}" class="link-primary">add health data</a>
   {% if request.user|has_group:"doctor" or request.user|has_group:"administer"%}
   <table class="table table-hover">
     <thead>
