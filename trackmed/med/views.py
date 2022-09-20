@@ -62,20 +62,6 @@ def viewpatient(request, id):
     return render(request, "med/viewpatient.html", context)
 
 
-# @login_required(login_url="/accounts/login/")
-# def createhealtdata(request):
-#     if request.method == "POST":
-#         form = HealthDataForm(request.POST)
-#         if form.is_valid:
-#             form.save()
-#             return redirect("home")
-#     else:
-#         form = HealthDataForm()
-
-#     context = {"form": form, "title": "create health data"}
-#     return render(request, "med/createhealtdata.html", context)
-
-
 @login_required(login_url="/accounts/login/")
 def list_health_data(request):
     listhealthdata = HealthData.objects.all()

@@ -50,6 +50,8 @@ class TestPatient(TestCase):
     def test_createpatient(self):
         url = reverse("createpatient")
         response = self.client.post(url, self.data)
+        getresponse = self.client.get(url)
+        self.assertEqual(getresponse.status_code, 302)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(resolve(url).func, createpatient)
 
